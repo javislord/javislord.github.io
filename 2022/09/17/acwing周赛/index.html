@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>acwing周赛 | Welcome To My Blog</title><meta name="keywords" content="题解,笔记,ACM,算法"><meta name="author" content="Javis"><meta name="copyright" content="Javis"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="acwing周赛笔记第 56 场周赛P4483格斗场难度：中等  算法：贪心 双指针题目一个格斗场内有 nn 个战士，其中第 ii 个战士的战斗力为 aiai。 作为格斗场内的经理人，你需要给战士们安排一对一的决斗。 这些决斗是一场接一场进行的，一场结束后才会安排下一场。 为了保证决斗的观赏性，在安排时需保证：  决斗双方的战斗力不能相同。 决斗双方的战斗力差距不能超过 KK。  已知，在决斗中战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="acwing周赛">
+<meta property="og:url" content="https://javislord.github.io/2022/09/17/acwing%E5%91%A8%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Welcome To My Blog">
+<meta property="og:description" content="acwing周赛笔记第 56 场周赛P4483格斗场难度：中等  算法：贪心 双指针题目一个格斗场内有 nn 个战士，其中第 ii 个战士的战斗力为 aiai。 作为格斗场内的经理人，你需要给战士们安排一对一的决斗。 这些决斗是一场接一场进行的，一场结束后才会安排下一场。 为了保证决斗的观赏性，在安排时需保证：  决斗双方的战斗力不能相同。 决斗双方的战斗力差距不能超过 KK。  已知，在决斗中战">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg">
+<meta property="article:published_time" content="2022-09-17T08:05:50.000Z">
+<meta property="article:modified_time" content="2022-09-17T08:09:22.799Z">
+<meta property="article:author" content="Javis">
+<meta property="article:tag" content="题解,笔记,ACM,算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://javislord.github.io/2022/09/17/acwing%E5%91%A8%E8%B5%9B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'acwing周赛',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-17 16:09:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.postimg.cc/L4GCdmFm/OIP-C.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.postimg.cc/pLBNqwjP/sea-7423274-340.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Welcome To My Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">acwing周赛</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-17T08:05:50.000Z" title="发表于 2022-09-17 16:05:50">2022-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-17T08:09:22.799Z" title="更新于 2022-09-17 16:09:22">2022-09-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="acwing周赛"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="acwing周赛笔记"><a href="#acwing周赛笔记" class="headerlink" title="acwing周赛笔记"></a>acwing周赛笔记</h1><h2 id="第-56-场周赛"><a href="#第-56-场周赛" class="headerlink" title="第 56 场周赛"></a>第 56 场周赛</h2><h3 id="P4483格斗场"><a href="#P4483格斗场" class="headerlink" title="P4483格斗场"></a>P4483格斗场</h3><h4 id="难度：中等-算法：贪心-双指针"><a href="#难度：中等-算法：贪心-双指针" class="headerlink" title="难度：中等  算法：贪心 双指针"></a>难度：中等  算法：贪心 双指针</h4><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><strong>一个格斗场内有 nn 个战士，其中第 ii 个战士的战斗力为 aiai。</strong></p>
+<p><strong>作为格斗场内的经理人，你需要给战士们安排一对一的决斗。</strong></p>
+<p><strong>这些决斗是一场接一场进行的，一场结束后才会安排下一场。</strong></p>
+<p><strong>为了保证决斗的观赏性，在安排时需保证：</strong></p>
+<ul>
+<li><strong>决斗双方的战斗力不能相同。</strong></li>
+<li><strong>决斗双方的战斗力差距不能超过 KK。</strong></li>
+</ul>
+<p><strong>已知，在决斗中战斗力高的选手一定可以将战斗力低的选手击败，并且失败的选手会被赶出格斗场。</strong></p>
+<p><strong>请你合理安排决斗，使得当剩余选手之间无法再安排任何决斗时，剩余选手的数量越少越好。</strong></p>
+<p><strong>请你输出剩余选手的最小可能数量。</strong></p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p><strong>第一行包含两个整数 n,Kn,K。</strong></p>
+<p><strong>第二行包含 nn 个整数 a1,a2,…,ana1,a2,…,an。</strong></p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h4><p><strong>一个整数，表示剩余选手的最小可能数量。</strong></p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p><strong>前四个测试点满足 1≤n≤101≤n≤10。</strong><br><strong>所有测试点满足 1≤n≤2×1051≤n≤2×105，1≤K≤1061≤K≤106，1≤ai≤1061≤ai≤106。</strong></p>
+<h4 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">7</span> <span class="number">1</span></span><br><span class="line"><span class="number">101</span> <span class="number">53</span> <span class="number">42</span> <span class="number">102</span> <span class="number">101</span> <span class="number">55</span> <span class="number">54</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">6</span> <span class="number">5</span></span><br><span class="line"><span class="number">20</span> <span class="number">15</span> <span class="number">10</span> <span class="number">15</span> <span class="number">20</span> <span class="number">25</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例3："><a href="#输入样例3：" class="headerlink" title="输入样例3："></a>输入样例3：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">7</span> <span class="number">1000000</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例3："><a href="#输出样例3：" class="headerlink" title="输出样例3："></a>输出样例3：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isvs</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;y&amp;&amp;x-y&lt;=k)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)cin&gt;&gt;a[i];</span><br><span class="line">    <span class="built_in">sort</span>(a,a+n,<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> ans=n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-2</span>,j=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>&amp;&amp;j&gt;=<span class="number">0</span>;)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isvs</span>(a[i],a[j],k))</span><br><span class="line">        &#123;</span><br><span class="line">            ans--;</span><br><span class="line">            <span class="keyword">if</span>(a[j]==a[i])i--;</span><br><span class="line">            <span class="keyword">else</span> j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i]==a[j])i--;</span><br><span class="line">            <span class="keyword">else</span> j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">solve</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4484有限小数"><a href="#4484有限小数" class="headerlink" title="4484有限小数"></a>4484有限小数</h3><h4 id="标签：数论-来源：Codeforces-984C-Finite-or-not-困难"><a href="#标签：数论-来源：Codeforces-984C-Finite-or-not-困难" class="headerlink" title="标签：数论     来源：Codeforces-984C - Finite or not?  困难"></a>标签：数论     来源：Codeforces-984C - Finite or not?  困难</h4><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p><strong>给定三个整数 p,q,bp,q,b，请你计算十进制表示下的 p&#x2F;qp&#x2F;q 的结果在 bb 进制下是否为有限小数。</strong></p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p><strong>第一行包含整数 TT，表示共有 TT 组测试数据。</strong></p>
+<p><strong>每组数据占一行，包含三个整数 p,q,bp,q,b。</strong></p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p><strong>每组数据输出一行结果，如果 p&#x2F;qp&#x2F;q 的结果在 bb 进制下是有限小数，则输出 <code>YES</code>，否则输出 <code>NO</code>。</strong></p>
+<h4 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h4><p><strong>前五个测试点满足 1≤T≤101≤T≤10。</strong><br><strong>所有测试点满足 1≤T≤1051≤T≤105，0≤p≤10180≤p≤1018，1≤q≤10181≤q≤1018，2≤b≤10182≤b≤1018。</strong></p>
+<h4 id="输入样例1：-1"><a href="#输入样例1：-1" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">6</span> <span class="number">12</span> <span class="number">10</span></span><br><span class="line"><span class="number">4</span> <span class="number">3</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1：-1"><a href="#输出样例1：-1" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">YES</span><br><span class="line">NO</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2：-1"><a href="#输入样例2：-1" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">9</span> <span class="number">36</span> <span class="number">2</span></span><br><span class="line"><span class="number">4</span> <span class="number">12</span> <span class="number">3</span></span><br><span class="line"><span class="number">3</span> <span class="number">5</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2：-1"><a href="#输出样例2：-1" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">NO</span><br></pre></td></tr></table></figure>
+
+<h4 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)<span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">gcd</span>(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    ll p,q,b,t;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;p&gt;&gt;q&gt;&gt;b;</span><br><span class="line">        q/=<span class="built_in">gcd</span>(p,q);</span><br><span class="line">        t=b;</span><br><span class="line">        <span class="keyword">while</span>(q!=<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            t=<span class="built_in">gcd</span>(t,q);</span><br><span class="line">            <span class="keyword">if</span>(t==<span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">while</span>(q%t==<span class="number">0</span>)q/=t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(q==<span class="number">1</span>)<span class="built_in">puts</span>(<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">solve</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://javislord.github.io">Javis</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://javislord.github.io/2022/09/17/acwing%E5%91%A8%E8%B5%9B/">https://javislord.github.io/2022/09/17/acwing%E5%91%A8%E8%B5%9B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://javislord.github.io" target="_blank">Welcome To My Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A2%98%E8%A7%A3-%E7%AC%94%E8%AE%B0-ACM-%E7%AE%97%E6%B3%95/">题解,笔记,ACM,算法</a></div><div class="post_share"><div class="social-share" data-image="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/17/%E8%B4%AA%E5%BF%83/"><img class="prev-cover" src="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">贪心</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/17/DP%E9%97%AE%E9%A2%98/"><img class="next-cover" src="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">DP问题</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.postimg.cc/L4GCdmFm/OIP-C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Javis</div><div class="author-info__description">javis的个人博客，学习算法过程中的积累、笔记和感悟</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/javislord" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://mail.qq.com" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a><a class="social-icon" href="https://weibo.com/u/7770643708" target="_blank" title="Weibo"><i class="fa-brands fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#acwing%E5%91%A8%E8%B5%9B%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">acwing周赛笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-56-%E5%9C%BA%E5%91%A8%E8%B5%9B"><span class="toc-number">1.1.</span> <span class="toc-text">第 56 场周赛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#P4483%E6%A0%BC%E6%96%97%E5%9C%BA"><span class="toc-number">1.1.1.</span> <span class="toc-text">P4483格斗场</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%BE%E5%BA%A6%EF%BC%9A%E4%B8%AD%E7%AD%89-%E7%AE%97%E6%B3%95%EF%BC%9A%E8%B4%AA%E5%BF%83-%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">难度：中等  算法：贪心 双指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">输入样例1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="toc-number">1.1.1.7.</span> <span class="toc-text">输出样例1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="toc-number">1.1.1.8.</span> <span class="toc-text">输入样例2：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="toc-number">1.1.1.9.</span> <span class="toc-text">输出样例2：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B3%EF%BC%9A"><span class="toc-number">1.1.1.10.</span> <span class="toc-text">输入样例3：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B3%EF%BC%9A"><span class="toc-number">1.1.1.11.</span> <span class="toc-text">输出样例3：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.12.</span> <span class="toc-text">AC代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4484%E6%9C%89%E9%99%90%E5%B0%8F%E6%95%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">4484有限小数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%EF%BC%9A%E6%95%B0%E8%AE%BA-%E6%9D%A5%E6%BA%90%EF%BC%9ACodeforces-984C-Finite-or-not-%E5%9B%B0%E9%9A%BE"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">标签：数论     来源：Codeforces-984C - Finite or not?  困难</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B1%EF%BC%9A-1"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">输入样例1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B1%EF%BC%9A-1"><span class="toc-number">1.1.2.7.</span> <span class="toc-text">输出样例1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B2%EF%BC%9A-1"><span class="toc-number">1.1.2.8.</span> <span class="toc-text">输入样例2：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B2%EF%BC%9A-1"><span class="toc-number">1.1.2.9.</span> <span class="toc-text">输出样例2：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.1.2.10.</span> <span class="toc-text">AC代码：</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/17/%E8%B4%AA%E5%BF%83/" title="贪心"><img src="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="贪心"/></a><div class="content"><a class="title" href="/2022/09/17/%E8%B4%AA%E5%BF%83/" title="贪心">贪心</a><time datetime="2022-09-17T08:06:12.000Z" title="发表于 2022-09-17 16:06:12">2022-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/17/acwing%E5%91%A8%E8%B5%9B/" title="acwing周赛"><img src="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="acwing周赛"/></a><div class="content"><a class="title" href="/2022/09/17/acwing%E5%91%A8%E8%B5%9B/" title="acwing周赛">acwing周赛</a><time datetime="2022-09-17T08:05:50.000Z" title="发表于 2022-09-17 16:05:50">2022-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/17/DP%E9%97%AE%E9%A2%98/" title="DP问题"><img src="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DP问题"/></a><div class="content"><a class="title" href="/2022/09/17/DP%E9%97%AE%E9%A2%98/" title="DP问题">DP问题</a><time datetime="2022-09-17T07:59:15.000Z" title="发表于 2022-09-17 15:59:15">2022-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/17/%E6%80%9D%E7%BB%B4%E9%A2%98/" title="思维题"><img src="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="思维题"/></a><div class="content"><a class="title" href="/2022/09/17/%E6%80%9D%E7%BB%B4%E9%A2%98/" title="思维题">思维题</a><time datetime="2022-09-17T07:56:04.000Z" title="发表于 2022-09-17 15:56:04">2022-09-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/17/%E5%85%AC%E5%BC%8F%E5%9D%97%E7%BC%96%E8%BE%91%E6%95%99%E7%A8%8B/" title="公式块编辑教程"><img src="https://i.postimg.cc/90ygz9tc/woman-happiness-sunrise-silhouette-thumb-1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="公式块编辑教程"/></a><div class="content"><a class="title" href="/2022/09/17/%E5%85%AC%E5%BC%8F%E5%9D%97%E7%BC%96%E8%BE%91%E6%95%99%E7%A8%8B/" title="公式块编辑教程">公式块编辑教程</a><time datetime="2022-09-17T05:58:55.000Z" title="发表于 2022-09-17 13:58:55">2022-09-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Javis</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
